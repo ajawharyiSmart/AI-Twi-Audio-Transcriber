@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HAKI - Status &amp; Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .float-animation {
+            animation: subtle-float 4s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0053db",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "primary-container": "#2563eb",
+                        "inverse-on-surface": "#eef0ff",
+                        "inverse-surface": "#283044",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "surface": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#360f00",
+                        "primary": "#004ac6",
+                        "surface-container-high": "#e2e7ff",
+                        "background": "#faf8ff",
+                        "on-surface-variant": "#434655",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffede6",
+                        "tertiary": "#943700",
+                        "on-primary-container": "#eeefff",
+                        "surface-bright": "#faf8ff",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#131b2e",
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eaedff",
+                        "outline": "#737686",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-highest": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "on-surface": "#131b2e",
+                        "secondary-container": "#6cf8bb",
+                        "surface-variant": "#dae2fd",
+                        "secondary": "#006c49",
+                        "tertiary-container": "#bc4800",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d2d9f4"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "container-margin": "16px",
+                        "gutter": "12px",
+                        "sm": "8px"
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-50 flex justify-between items-center w-full px-container-margin py-sm h-16">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a friendly user for an AI translation app profile. The background is a soft, out-of-focus modern office in light blue and white tones. The lighting is bright and airy, reflecting a clean and intelligent aesthetic consistent with high-end tech branding. The overall mood is approachable and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDawIezvbGTX8EHaq_FMCgKuJkKLaIDV3FNl5PEF4VYv9UNoAdQ7de_eedI-G0255_NoCVF4BAjpwTi1YzNDOXZKKKvblVq3UEMwFJ9kYFZZ1FDAzFOHddIARd-NsTMrMSMfR_xjCXgMlrK3qD3jCQZyjsdsLTMPoM-DffyxXFrF22oqQ1-wq_9cP3dVUKKDRop1NVUjAY2pvhySFDw-DZ9SgFMCTB35Tm5Yhz7uvTRQytO30kC80Uw"/>
+</div>
+</div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">HAKI</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col px-container-margin py-lg gap-lg max-w-lg mx-auto w-full">
+<!-- Header Text -->
+<div class="space-y-xs">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">System Status</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Here is a composite view of potential system states for the transcription service.</p>
+</div>
+<!-- Section 1: Empty State (No History) -->
+<section class="glass-card rounded-xl p-lg flex flex-col items-center text-center gap-md">
+<div class="w-48 h-48 relative float-animation">
+<img class="w-full h-full object-contain" data-alt="A minimalist 3D illustration of an empty digital archive box with floating translucent geometric sheets nearby. The style is clean and modern with a primary color palette of HAKI blue and soft slate. Soft ambient shadows and high-key studio lighting create a breathable, intelligent atmosphere. The aesthetic is professional, minimalist, and focuses on extreme legibility and calm clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAueEWIwbTuQftv7WEv8T9BrSZz50eCS6fOBkYAdqhQ5nf5zp9wc5yW57h1tdF7nkUX3ZubTlDVPoK3_MbRIwL0xfJdhCE1C1NGrcMhXZWUjYtoKr8DVcT3DioZlcoudaK1Rk8L3IsMCjXxap_iT-PxAMWCVSzJ9wUIc-DyuVv9f6VPoWeziLqGPSnUQel79PtxyCJ-DY7lhsLDgR4TZ0khcJ-V60ifSiU_3WPZQs9zsNk6Nf17B5t3"/>
+</div>
+<div class="space-y-xs">
+<h3 class="text-headline-sm font-headline-sm text-primary">No History Yet</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-[280px] mx-auto">Your transcribed Ga translations will appear here once you start recording.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md active:scale-95 transition-all duration-150">
+                START RECORDING
+            </button>
+</section>
+<!-- Section 2: Error State (No Internet) -->
+<section class="glass-card rounded-xl p-lg flex flex-col items-center text-center gap-md border-l-4 border-error">
+<div class="w-16 h-16 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-4xl">wifi_off</span>
+</div>
+<div class="space-y-xs">
+<h3 class="text-headline-sm font-headline-sm text-error">No Internet Connection</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">We couldn't connect to the HAKI AI servers. Please check your network and try again.</p>
+</div>
+<button class="border border-primary text-primary px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                RETRY CONNECTION
+            </button>
+</section>
+<!-- Section 3: Task Specific State (Upload Failed) -->
+<section class="bg-surface-container-low rounded-xl p-md flex items-start gap-md border border-outline-variant">
+<div class="w-12 h-12 shrink-0 rounded-lg bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container">cloud_off</span>
+</div>
+<div class="flex-grow space-y-xs">
+<div class="flex justify-between items-center">
+<h4 class="font-headline-sm text-body-md text-tertiary">Upload Failed</h4>
+<span class="text-label-md font-label-md text-outline">12:45 PM</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">"Ga greeting at the festival..."</p>
+<div class="flex gap-sm pt-xs">
+<button class="text-primary font-label-md text-label-md hover:underline">Resume Upload</button>
+<button class="text-error font-label-md text-label-md hover:underline">Discard</button>
+</div>
+</div>
+</section>
+<!-- Buffer for Bottom Nav -->
+<div class="h-20"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim pb-safe px-2 border-t border-outline-variant dark:border-outline shadow-sm rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md mt-1">History</span>
+</a>
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold px-4 py-1 rounded-lg bg-surface-container-low" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the Retry button
+        document.querySelector('button.border-primary').addEventListener('click', function() {
+            const icon = this.querySelector('.material-symbols-outlined');
+            icon.classList.add('animate-spin');
+            this.disabled = true;
+            this.innerText = 'Connecting...';
+            
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                this.disabled = false;
+                this.innerHTML = '<span class="material-symbols-outlined text-sm">refresh</span> RETRY CONNECTION';
+            }, 2000);
+        });
+
+        // Add active state styles to the Alerts nav item (it is currently active as it shows system states)
+        const navItems = document.querySelectorAll('nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                navItems.forEach(i => {
+                    i.className = "flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg";
+                });
+                item.className = "flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold px-4 py-1 rounded-lg bg-surface-container-low";
+            });
+        });
+    </script>
+</body></html>

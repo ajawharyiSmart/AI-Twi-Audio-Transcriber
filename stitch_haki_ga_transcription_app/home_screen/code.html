@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI - Intelligence Clarity</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .ai-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(111, 251, 190, 0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .tonal-elevation {
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full flex justify-between items-center px-container-margin py-sm h-16 bg-surface dark:bg-surface-dim transition-all duration-300">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary-container/10">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young person with a friendly expression, soft lighting, minimalist background, high-resolution digital photography style, clean aesthetic, cool blue color palette accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPTFYjvqg91Ku6Edn2ZYWIOxjQuko9SxRVi_UOM_4UAdoEASbVGrwhfAqGlxZfONWSLj2RX_SJbGFNc0D8J54ztFNSIl9hV5wyEdgMNb-kWu0jMZyh15XRrrZlkicFOp-bzcptADATCiiKmsn4WKm7DIZ6lXdXmflYcIFI2gFWShzD1GFjQp223NypszFEdkAk8nAGBEl8vpT2rguCt3NnjJlSTR8krJ61vM4reMgyR4SgW__8rcF2"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant">Hello, User</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">HAKI</h1>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</header>
+<main class="mt-20 px-container-margin space-y-lg">
+<!-- Hero AI Card -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant p-lg tonal-elevation">
+<!-- Background Subtle Pattern -->
+<div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 space-y-md">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Start Transcription</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-[280px]">Capture speech with AI precision in Ga or English.</p>
+<div class="grid grid-cols-2 gap-md pt-sm">
+<button class="flex flex-col items-center justify-center gap-sm p-md bg-primary text-on-primary rounded-lg active:scale-95 transition-all duration-150 shadow-sm">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="text-label-md font-label-md">Record Audio</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm p-md bg-surface-container text-primary border border-primary/20 rounded-lg active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-[32px]">upload_file</span>
+<span class="text-label-md font-label-md">Upload Audio</span>
+</button>
+</div>
+</div>
+<!-- AI Processing Indicator (Mock) -->
+<div class="absolute bottom-0 left-0 w-full h-1 ai-shimmer opacity-50"></div>
+</section>
+<!-- Recent Recordings -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Recent Recordings</h3>
+<button class="text-primary text-label-md font-label-md hover:underline transition-all">See All</button>
+</div>
+<div class="space-y-gutter">
+<!-- Recording Card 1 -->
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/50 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-1 h-12 bg-primary rounded-full"></div>
+<div class="flex-grow">
+<h4 class="text-body-md font-semibold text-on-surface">Ga Market Interview</h4>
+<div class="flex items-center gap-xs text-on-surface-variant text-label-md font-label-md">
+<span>Oct 24, 2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>12:45</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-[2px] bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-wider">Completed</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Recording Card 2 -->
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/50 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-1 h-12 bg-tertiary rounded-full"></div>
+<div class="flex-grow">
+<h4 class="text-body-md font-semibold text-on-surface">Community Meeting</h4>
+<div class="flex items-center gap-xs text-on-surface-variant text-label-md font-label-md">
+<span>Oct 23, 2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>45:20</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-[2px] bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-wider">Completed</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Recording Card 3 -->
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/50 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-1 h-12 bg-primary rounded-full"></div>
+<div class="flex-grow">
+<h4 class="text-body-md font-semibold text-on-surface">Personal Dictation 01</h4>
+<div class="flex items-center gap-xs text-on-surface-variant text-label-md font-label-md">
+<span>Oct 22, 2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>05:12</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-[2px] bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-wider">Completed</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento Section -->
+<section class="grid grid-cols-2 gap-md">
+<div class="p-md bg-surface-container-highest rounded-xl flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<div>
+<p class="text-display-lg font-display-lg text-on-surface">12</p>
+<p class="text-label-md font-label-md text-on-surface-variant uppercase">Total Transcripts</p>
+</div>
+</div>
+<div class="p-md bg-surface-container-high rounded-xl flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<div>
+<p class="text-display-lg font-display-lg text-on-surface">98%</p>
+<p class="text-label-md font-label-md text-on-surface-variant uppercase">Accuracy Rate</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim pb-safe px-2 border-t border-outline-variant shadow-sm rounded-t-xl">
+<!-- Home Active -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold transition-all duration-200 active:scale-90 w-full h-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</button>
+<!-- History Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-full h-full">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</button>
+<!-- Upload FAB Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-full h-full">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-md font-label-md">Upload</span>
+</button>
+<!-- Alerts Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-full h-full">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md">Alerts</span>
+</button>
+<!-- Profile Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-full h-full">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple scroll interaction for Header
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'bg-white/80', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/80', 'backdrop-blur-md');
+            }
+        });
+
+        // Button feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

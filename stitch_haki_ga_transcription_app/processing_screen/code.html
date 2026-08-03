@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI | AI Processing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .processing-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(0, 74, 198, 0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .step-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.2; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0053db",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "primary-container": "#2563eb",
+                        "inverse-on-surface": "#eef0ff",
+                        "inverse-surface": "#283044",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "surface": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#360f00",
+                        "primary": "#004ac6",
+                        "surface-container-high": "#e2e7ff",
+                        "background": "#faf8ff",
+                        "on-surface-variant": "#434655",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffede6",
+                        "tertiary": "#943700",
+                        "on-primary-container": "#eeefff",
+                        "surface-bright": "#faf8ff",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#131b2e",
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eaedff",
+                        "outline": "#737686",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-highest": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "on-surface": "#131b2e",
+                        "secondary-container": "#6cf8bb",
+                        "surface-variant": "#dae2fd",
+                        "secondary": "#006c49",
+                        "tertiary-container": "#bc4800",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d2d9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "container-margin": "16px",
+                        "gutter": "12px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "transcription-text": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-surface-dim flex justify-between items-center w-full px-container-margin py-sm h-16 fixed top-0 z-50">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a modern Ghanian woman with a friendly smile, set against a soft minimalist backdrop of primary blue and white tones. The lighting is soft and high-key, reflecting a high-end AI platform aesthetic. The image is clean, sharp, and focused on professionalism and intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAISq5d0g8uMFz_5LzsKtzv-vv9aHD0oaI2a3c2O823xMiWwjFlCmrckp5tYnsCL5Q8MyvfjJczJs1PEzsqfPpHItTE-1LmAcVSlYGFLHm024XBuzQyZcTL8rphgayilSCsDBAacL7zhB-RM36DuPnA5uKWuHLwDycd9fTMHhVQGcCLF6tZ0GEL5SFQ1mFq6elusxUUBx53UGar0cT6_pTA_8ENZ75rACC7TUf_svp_6_4p9dFtYGEx"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">HAKI</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center pt-24 pb-32 px-container-margin max-w-lg mx-auto w-full">
+<!-- Processing Illustration Area -->
+<div class="relative w-64 h-64 mb-xl flex items-center justify-center">
+<!-- Animated Background Shader (Representing AI "Thought") -->
+<div class="absolute inset-0 rounded-full overflow-hidden opacity-30 blur-2xl pulse-ring">
+
+</div>
+<!-- Central Progress Circle -->
+<div class="relative w-48 h-48 flex items-center justify-center bg-surface-container-lowest rounded-full shadow-lg border border-outline-variant/30">
+<svg class="w-44 h-44 -rotate-90">
+<!-- Base Track -->
+<circle class="text-surface-container-high" cx="88" cy="88" fill="transparent" r="80" stroke="currentColor" stroke-width="8"></circle>
+<!-- Progress Line (Simulated 65%) -->
+<circle class="text-primary transition-all duration-1000 ease-in-out" cx="88" cy="88" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.65" stroke-dashoffset="176" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-display-lg font-display-lg text-primary">65%</span>
+<span class="text-label-md font-label-md uppercase tracking-widest text-on-surface-variant">Processing</span>
+</div>
+</div>
+<!-- Floating AI Particles (Decorative) -->
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center shadow-md animate-bounce" style="animation-duration: 3s">
+<span class="material-symbols-outlined text-on-secondary-container" data-weight="fill">auto_awesome</span>
+</div>
+</div>
+<!-- Status List -->
+<div class="w-full space-y-md">
+<div class="text-center mb-md">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Transcribing Ga Speech</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Please stay on this screen. HAKI is processing the cultural nuances of your audio.</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-lg space-y-lg relative overflow-hidden">
+<!-- Shimmer Effect -->
+<div class="absolute inset-0 processing-shimmer pointer-events-none opacity-20"></div>
+<!-- Step 1: Completed -->
+<div class="flex items-center gap-md step-transition">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-label-md text-secondary">Uploading Audio</p>
+</div>
+<span class="text-label-md font-label-md text-secondary opacity-60">Done</span>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex items-center gap-md step-transition">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-label-md text-secondary">Processing Speech</p>
+</div>
+<span class="text-label-md font-label-md text-secondary opacity-60">Done</span>
+</div>
+<!-- Step 3: Active -->
+<div class="flex items-center gap-md step-transition relative">
+<!-- Active Vertical Bar Anchor -->
+<div class="absolute left-[-20px] top-0 bottom-0 w-1 bg-primary rounded-full"></div>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0 animate-pulse">
+<span class="material-symbols-outlined text-on-primary-container text-sm">graphic_eq</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-label-md text-primary font-bold">Generating Ga Transcript</p>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-1 h-1 bg-primary rounded-full animate-bounce" style="animation-delay: 0s"></div>
+<div class="w-1 h-1 bg-primary rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+<div class="w-1 h-1 bg-primary rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex items-center gap-md step-transition opacity-40">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-outline text-sm">translate</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-label-md text-on-surface-variant">Translating to English</p>
+</div>
+</div>
+<!-- Step 5: Pending -->
+<div class="flex items-center gap-md step-transition opacity-40">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-outline text-sm">description</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-label-md text-on-surface-variant">Preparing Results</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tip Card -->
+<div class="mt-xl w-full bg-surface-container border border-primary/10 rounded-xl p-md flex gap-md items-start">
+<span class="material-symbols-outlined text-primary" data-weight="fill">lightbulb</span>
+<div class="space-y-xs">
+<p class="text-label-md font-label-md text-primary uppercase">Pro Tip</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">HAKI's AI handles local Accra dialects and idioms for more accurate translations.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline pb-safe px-2 shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<!-- Active Tab: Upload (since we are currently processing a file) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold scale-90 transition-transform duration-200 px-4 py-2 bg-surface-container-low rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-label-md font-label-md">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Periodic update to progress percentage
+        let progress = 65;
+        const progressEl = document.querySelector('.text-display-lg');
+        const circleEl = document.querySelector('circle[stroke-dashoffset]');
+        
+        setInterval(() => {
+            if (progress < 98) {
+                progress += Math.floor(Math.random() * 2);
+                progressEl.textContent = `${progress}%`;
+                
+                // Calculate dashoffset (Circumference is 502.65)
+                const offset = 502.65 - (502.65 * progress / 100);
+                circleEl.style.strokeDashoffset = offset;
+            }
+        }, 3000);
+
+        // Simulated haptic feedback on active items
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('opacity-80', 'scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('opacity-80', 'scale-95');
+            });
+        });
+    </script>
+</body></html>

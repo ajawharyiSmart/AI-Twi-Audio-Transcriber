@@ -1,0 +1,9 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+librosa==0.10.1
+torch
+transformers
+peft
+sqlalchemy
+soundfile

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HAKI - Create Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8ff;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ai-glow {
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, #faf8ff 0%, #f2f3ff 50%, #faf8ff 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .btn-active:active {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Top Navigation Anchor (Simulated Small App Bar for Registration Flow) -->
+<header class="fixed top-0 left-0 w-full flex justify-between items-center px-container-margin py-sm h-16 bg-surface z-50">
+<span class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight">HAKI</span>
+<button class="text-label-md font-label-md text-primary px-4 py-2 rounded-lg hover:bg-surface-container-low transition-colors">
+            Sign In
+        </button>
+</header>
+<main class="w-full max-w-md mt-16 mb-8">
+<!-- Brand Identity & Header Section -->
+<div class="text-center mb-xl">
+<h1 class="text-display-lg font-display-lg text-on-surface mb-xs">Join HAKI</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Intelligent Ga transcription &amp; translation for professionals.</p>
+</div>
+<!-- Registration Form Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant ai-glow transition-all duration-300">
+<form class="space-y-md" onsubmit="return false;">
+<!-- Name Field -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant" for="name">FULL NAME</label>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full pl-10 pr-md py-3 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" id="name" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant" for="email">EMAIL ADDRESS</label>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-10 pr-md py-3 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" id="email" placeholder="email@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant" for="password">PASSWORD</label>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-10 pr-md py-3 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant" for="confirm-password">CONFIRM PASSWORD</label>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">lock_reset</span>
+<input class="w-full pl-10 pr-md py-3 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" id="confirm-password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Accept Terms Checkbox -->
+<div class="flex items-start gap-sm pt-xs">
+<div class="flex items-center h-5">
+<input class="w-5 h-5 text-primary bg-surface border-outline-variant rounded focus:ring-primary focus:ring-offset-0" id="terms" type="checkbox"/>
+</div>
+<label class="text-body-sm font-body-sm text-on-surface-variant" for="terms">
+                        I accept the <a class="text-primary font-medium hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-medium hover:underline" href="#">Privacy Policy</a>.
+                    </label>
+</div>
+<!-- Create Account Button -->
+<button class="w-full h-12 bg-primary text-white font-headline-sm rounded-lg btn-active hover:bg-surface-tint shadow-sm transition-all duration-150 flex items-center justify-center gap-sm mt-lg" type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<!-- Social Provider Divider -->
+<div class="relative my-lg">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center text-label-md">
+<span class="bg-surface-container-lowest px-md text-outline font-label-md">OR CONTINUE WITH</span>
+</div>
+</div>
+<!-- Social Providers Grid -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center h-12 border border-outline-variant rounded-lg bg-surface-container-low hover:bg-surface-container hover:border-outline transition-colors group">
+<div class="w-5 h-5 flex items-center justify-center mr-sm">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface">google</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant group-hover:text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center h-12 border border-outline-variant rounded-lg bg-surface-container-low hover:bg-surface-container hover:border-outline transition-colors group">
+<div class="w-5 h-5 flex items-center justify-center mr-sm">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface">file_download</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant group-hover:text-on-surface">Apple</span>
+</button>
+</div>
+</div>
+<!-- Footnote -->
+<p class="text-center mt-lg text-body-sm font-body-sm text-on-surface-variant">
+            Already have an account? <a class="text-primary font-semibold hover:underline" href="#">Sign in here</a>
+</p>
+</main>
+<!-- Aesthetic Decorative Element (Minimalist AI Waveform at bottom) -->
+<div class="w-full max-w-lg mt-auto opacity-40">
+<div class="flex justify-center items-end gap-1 h-12">
+<div class="w-1 bg-primary-fixed rounded-full h-4 animate-pulse" style="animation-delay: 0.1s"></div>
+<div class="w-1 bg-primary-fixed-dim rounded-full h-8 animate-pulse" style="animation-delay: 0.2s"></div>
+<div class="w-1 bg-primary rounded-full h-6 animate-pulse" style="animation-delay: 0.3s"></div>
+<div class="w-1 bg-primary-container rounded-full h-10 animate-pulse" style="animation-delay: 0.4s"></div>
+<div class="w-1 bg-primary-fixed rounded-full h-5 animate-pulse" style="animation-delay: 0.5s"></div>
+<div class="w-1 bg-primary-fixed-dim rounded-full h-7 animate-pulse" style="animation-delay: 0.6s"></div>
+<div class="w-1 bg-primary rounded-full h-3 animate-pulse" style="animation-delay: 0.7s"></div>
+</div>
+</div>
+<!-- Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.closest('.group')?.classList.add('scale-[1.01]');
+                });
+                input.addEventListener('blur', () => {
+                    input.closest('.group')?.classList.remove('scale-[1.01]');
+                });
+            });
+
+            // Toggle Password Visibility
+            const togglePass = document.querySelector('button span[data-icon="visibility"]');
+            if (togglePass) {
+                // Logic would go here to swap input types
+            }
+        });
+    </script>
+</body></html>

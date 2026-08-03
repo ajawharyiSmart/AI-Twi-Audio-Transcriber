@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI - Recording</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .recording-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.2; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        .waveform-bar {
+            transition: height 0.1s ease-in-out;
+        }
+        .bg-blur-glass {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0053db",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "primary-container": "#2563eb",
+                        "inverse-on-surface": "#eef0ff",
+                        "inverse-surface": "#283044",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "surface": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#360f00",
+                        "primary": "#004ac6",
+                        "surface-container-high": "#e2e7ff",
+                        "background": "#faf8ff",
+                        "on-surface-variant": "#434655",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffede6",
+                        "tertiary": "#943700",
+                        "on-primary-container": "#eeefff",
+                        "surface-bright": "#faf8ff",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#131b2e",
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eaedff",
+                        "outline": "#737686",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-highest": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "on-surface": "#131b2e",
+                        "secondary-container": "#6cf8bb",
+                        "surface-variant": "#dae2fd",
+                        "secondary": "#006c49",
+                        "tertiary-container": "#bc4800",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d2d9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "container-margin": "16px",
+                        "gutter": "12px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "transcription-text": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-container-margin py-sm h-16 bg-surface">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">HAKI</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-error w-2 h-2 rounded-full animate-pulse"></span>
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Recording</span>
+</div>
+</header>
+<main class="min-h-screen pt-16 pb-32 px-container-margin flex flex-col items-center justify-center space-y-12">
+<!-- Large Microphone Illustration Area -->
+<div class="relative w-64 h-64 flex items-center justify-center">
+<!-- Pulsing Ambient Circles -->
+<div class="absolute inset-0 bg-primary opacity-5 rounded-full recording-pulse"></div>
+<div class="absolute inset-4 bg-primary opacity-10 rounded-full recording-pulse" style="animation-delay: 0.5s"></div>
+<!-- Central Mic Icon Container -->
+<div class="relative z-10 w-48 h-48 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary" style="font-size: 80px; font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+</div>
+<!-- Timer Section -->
+<div class="text-center space-y-2">
+<p class="text-display-lg font-display-lg text-on-background tabular-nums" id="timer">00:00</p>
+<p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Elapsed Time</p>
+</div>
+<!-- Dynamic Waveform Visualization -->
+<div class="w-full max-w-md h-24 flex items-center justify-center gap-1.5 px-md overflow-hidden">
+<!-- Waveform bars generated by script -->
+<div class="flex items-center gap-1.5 h-full" id="waveform-container"></div>
+</div>
+<!-- Real-time Transcription Peek (Bento-style Card) -->
+<div class="w-full max-w-md bg-surface-container-low rounded-xl p-lg border border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-secondary text-sm">auto_awesome</span>
+<span class="text-label-md font-label-md text-secondary">Live Transcription (Ga)</span>
+</div>
+<p class="text-transcription-text font-transcription-text text-on-surface leading-relaxed italic opacity-60">
+                Listening for audio...
+            </p>
+</div>
+</main>
+<!-- Controls Floating Bar -->
+<footer class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-32px)] max-w-md">
+<div class="bg-surface-container-highest/80 bg-blur-glass border border-white/40 shadow-2xl rounded-full p-2 flex items-center justify-between">
+<!-- Pause / Resume Toggle -->
+<button class="flex items-center justify-center w-14 h-14 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-white transition-all active:scale-95 border border-outline-variant/30 group" id="pause-btn">
+<span class="material-symbols-outlined transition-transform group-hover:scale-110" id="pause-icon">pause</span>
+</button>
+<!-- Stop & Save (Primary Action) -->
+<button class="flex-1 mx-4 h-14 rounded-full bg-primary text-on-primary font-bold text-body-md shadow-md hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stop_circle</span>
+<span>Stop &amp; Save</span>
+</button>
+<!-- Mark / Highlight Action -->
+<button class="flex items-center justify-center w-14 h-14 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-white transition-all active:scale-95 border border-outline-variant/30 group">
+<span class="material-symbols-outlined transition-transform group-hover:scale-110">bookmark</span>
+</button>
+</div>
+</footer>
+<script>
+        // Waveform Animation Logic
+        const container = document.getElementById('waveform-container');
+        const barCount = 40;
+        const bars = [];
+
+        for (let i = 0; i < barCount; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'waveform-bar w-1.5 bg-primary/40 rounded-full';
+            bar.style.height = '10%';
+            container.appendChild(bar);
+            bars.push(bar);
+        }
+
+        function animateWaveform() {
+            bars.forEach((bar, index) => {
+                // Random height for visualization
+                const height = Math.random() * 80 + 10;
+                bar.style.height = `${height}%`;
+                // Color intensity based on height
+                bar.style.backgroundColor = height > 60 ? 'var(--primary)' : 'rgba(0, 74, 198, 0.4)';
+            });
+            if (!isPaused) requestAnimationFrame(() => setTimeout(animateWaveform, 100));
+        }
+
+        // Timer Logic
+        let seconds = 0;
+        let isPaused = false;
+        const timerEl = document.getElementById('timer');
+
+        function updateTimer() {
+            if (!isPaused) {
+                seconds++;
+                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const secs = (seconds % 60).toString().padStart(2, '0');
+                timerEl.textContent = `${mins}:${secs}`;
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        animateWaveform();
+
+        // Control Interactions
+        const pauseBtn = document.getElementById('pause-btn');
+        const pauseIcon = document.getElementById('pause-icon');
+
+        pauseBtn.addEventListener('click', () => {
+            isPaused = !isPaused;
+            if (isPaused) {
+                pauseIcon.textContent = 'play_arrow';
+                pauseBtn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+                pauseBtn.classList.remove('bg-surface-container-lowest');
+            } else {
+                pauseIcon.textContent = 'pause';
+                pauseBtn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+                pauseBtn.classList.add('bg-surface-container-lowest');
+                animateWaveform();
+            }
+        });
+
+        // Simple haptic feedback simulation
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                if (window.navigator.vibrate) window.navigator.vibrate(10);
+            });
+        });
+    </script>
+</body></html>

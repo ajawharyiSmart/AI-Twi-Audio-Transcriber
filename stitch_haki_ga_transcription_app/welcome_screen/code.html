@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI - Intelligent Transcription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Atmospheric Motion */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #004ac6 0%, #2563eb 50%, #004ac6 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-hidden">
+<!-- Ambient Atmospheric Background -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-container/10 blur-[100px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-between px-container-margin py-xl max-w-lg mx-auto w-full text-center">
+<!-- Header Branding (Logo Area) -->
+<div class="mt-[10vh] flex flex-col items-center gap-md">
+<div class="floating mb-sm">
+<!-- Large Central HAKI Logo Design -->
+<div class="relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary-container rounded-[28px] rotate-12 opacity-10"></div>
+<div class="absolute inset-0 bg-primary rounded-[28px] -rotate-6 opacity-20"></div>
+<div class="relative w-20 h-20 bg-primary rounded-[24px] flex items-center justify-center shadow-lg">
+<span class="text-on-primary font-bold text-4xl tracking-tighter">H</span>
+</div>
+</div>
+</div>
+<div class="space-y-xs">
+<h1 class="text-display-lg font-display-lg tracking-tight text-on-surface">
+<span class="shimmer-text">HAKI</span>
+</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[280px] mx-auto leading-relaxed">
+                    Precision transcription &amp; translation for the Ga language.
+                </p>
+</div>
+</div>
+<!-- Visual Anchor: AI Interaction Hint -->
+<div class="w-full flex justify-center py-xl">
+<div class="glass-panel border border-outline-variant/30 rounded-full px-md py-sm flex items-center gap-sm">
+<span class="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Intelligent Clarity</span>
+</div>
+</div>
+<!-- Action Section -->
+<div class="w-full flex flex-col gap-md safe-bottom mb-lg">
+<!-- Primary Actions -->
+<div class="flex flex-col gap-sm">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-headline-sm text-headline-sm shadow-sm transition-all duration-150 active:opacity-90 flex items-center justify-center gap-sm" onclick="this.classList.add('scale-95'); setTimeout(()=&gt;this.classList.remove('scale-95'), 150)">
+                    Create Account
+                </button>
+<button class="w-full h-14 border-2 border-primary text-primary rounded-xl font-headline-sm text-headline-sm transition-all duration-150 active:bg-primary-container/5" onclick="this.classList.add('scale-95'); setTimeout(()=&gt;this.classList.remove('scale-95'), 150)">
+                    Sign In
+                </button>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-md px-md">
+<div class="h-[1px] flex-1 bg-outline-variant/50"></div>
+<span class="text-label-md font-label-md text-outline">OR</span>
+<div class="h-[1px] flex-1 bg-outline-variant/50"></div>
+</div>
+<!-- Secondary Actions -->
+<button class="w-full h-14 bg-surface-container-lowest border border-outline-variant/50 text-on-surface rounded-xl font-body-md text-body-md flex items-center justify-center gap-md transition-all duration-150 shadow-sm active:bg-surface-container-low" onclick="this.classList.add('scale-95'); setTimeout(()=&gt;this.classList.remove('scale-95'), 150)">
+<div class="w-6 h-6 flex items-center justify-center">
+<svg height="18" viewbox="0 0 18 18" width="18">
+<path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"></path>
+<path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"></path>
+<path d="M3.964 10.706c-.18-.54-.282-1.117-.282-1.706s.102-1.166.282-1.706V4.962H.957C.347 6.177 0 7.548 0 9s.347 2.823.957 4.038l3.007-2.332z" fill="#FBBC05"></path>
+<path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.443 2.017.957 4.962l3.007 2.332c.708-2.127 2.692-3.714 5.036-3.714z" fill="#EA4335"></path>
+</svg>
+</div>
+                Continue with Google
+            </button>
+</div>
+<!-- Footer Terms -->
+<p class="text-label-md font-label-md text-outline px-xl leading-tight">
+            By continuing, you agree to our <a class="underline hover:text-primary transition-colors" href="#">Terms of Service</a> and <a class="underline hover:text-primary transition-colors" href="#">Privacy Policy</a>.
+        </p>
+</main>
+<!-- Visual Polish: Shimmer Overlay for Buttons -->
+<script>
+        // Micro-interaction for primary button
+        const primaryBtn = document.querySelector('button.bg-primary');
+        if (primaryBtn) {
+            primaryBtn.addEventListener('mousemove', (e) => {
+                const rect = primaryBtn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                primaryBtn.style.setProperty('--x', `${x}px`);
+                primaryBtn.style.setProperty('--y', `${y}px`);
+            });
+        }
+
+        // Handle simple navigation simulations (visual only)
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Optional: Add haptic feedback simulation if needed
+            });
+        });
+    </script>
+</body></html>

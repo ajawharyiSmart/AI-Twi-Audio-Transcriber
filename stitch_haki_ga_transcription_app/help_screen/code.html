@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI - Help Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8ff;
+            color: #131b2e;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-item.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface-dim flex justify-between items-center px-container-margin py-sm h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help</span>
+</div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">HAKI</h1>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling user against a clean, minimalist blue gradient background. The lighting is soft and studio-quality, emphasizing a professional yet approachable tech-savvy persona. The overall aesthetic matches the clean HAKI blue brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdvZWUNLMskWr3vaT6ek2oaXl6UEFk88ERvXHrCMykGkyaxUPinvUti6Y41g1pBXuh9pn8dPJXKVGANQWzMoCrtDkqM0ZDx9Vdy_R95lhQ-7yRCrYpholTJb78Y29STKZxvkWr52JFZIuabZosRzs0ajdPP6SDBZ5Us_aRQ_s1wj3RVl0oLjDERJi79OMWgRczVunwBuV_XQl2I1LVDEE1HqP6--sYZEHTsYCWWUCVCAeCij0Q__eW"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-container-margin max-w-2xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-lg">
+<h2 class="text-display-lg font-display-lg mb-xs">How can we help?</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-md">Get answers to common questions about transcription and Ga language translation.</p>
+<!-- Search Bar -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary outline-none transition-all text-body-md font-body-md shadow-sm" placeholder="Search for help articles..." type="text"/>
+</div>
+</section>
+<!-- FAQ Sections -->
+<section class="space-y-md">
+<h3 class="text-label-md font-label-md uppercase tracking-widest text-outline">Frequently Asked Questions</h3>
+<div class="space-y-3">
+<!-- FAQ Item 1 -->
+<div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm transition-all hover:border-primary-fixed-dim">
+<button class="w-full flex items-center justify-between p-md text-left" onclick="toggleAccordion(this)">
+<span class="text-body-md font-semibold text-on-surface">How accurate is the Ga transcription?</span>
+<span class="material-symbols-outlined arrow-icon transition-transform text-primary">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-md pb-md text-body-sm text-on-surface-variant leading-relaxed">
+                            HAKI uses state-of-the-art neural networks specifically trained on urban and traditional Ga dialects. We maintain over 95% accuracy for clear audio recordings and continuously improve through local linguistic feedback loops.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm transition-all hover:border-primary-fixed-dim">
+<button class="w-full flex items-center justify-between p-md text-left" onclick="toggleAccordion(this)">
+<span class="text-body-md font-semibold text-on-surface">Can I export transcripts to PDF?</span>
+<span class="material-symbols-outlined arrow-icon transition-transform text-primary">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-md pb-md text-body-sm text-on-surface-variant leading-relaxed">
+                            Yes! After a transcription is complete, tap the 'Export' icon in the top right corner of the transcript view. You can choose between PDF, DOCX, and raw text formats.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm transition-all hover:border-primary-fixed-dim">
+<button class="w-full flex items-center justify-between p-md text-left" onclick="toggleAccordion(this)">
+<span class="text-body-md font-semibold text-on-surface">Is my data secure?</span>
+<span class="material-symbols-outlined arrow-icon transition-transform text-primary">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-md pb-md text-body-sm text-on-surface-variant leading-relaxed">
+                            Security is our priority. All audio files and generated transcripts are encrypted at rest and in transit. We never sell your data to third parties, and recordings are only used to improve the AI model if you explicitly opt-in.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm transition-all hover:border-primary-fixed-dim">
+<button class="w-full flex items-center justify-between p-md text-left" onclick="toggleAccordion(this)">
+<span class="text-body-md font-semibold text-on-surface">Subscription &amp; Billing</span>
+<span class="material-symbols-outlined arrow-icon transition-transform text-primary">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-md pb-md text-body-sm text-on-surface-variant leading-relaxed">
+                            You can manage your subscription directly from the 'Profile' tab. We offer monthly and yearly plans, as well as a pay-as-you-go option for occasional transcription needs.
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Grid (Bento Style) -->
+<section class="mt-xl grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Contact Support -->
+<div class="bg-primary p-lg rounded-2xl text-on-primary shadow-lg flex flex-col justify-between h-48 active:scale-95 transition-all">
+<div>
+<span class="material-symbols-outlined text-4xl mb-sm" style="font-variation-settings: 'FILL' 1;">chat</span>
+<h4 class="text-headline-sm font-headline-sm">Contact Support</h4>
+<p class="text-body-sm opacity-90">Chat with our linguists and tech team.</p>
+</div>
+<button class="mt-4 bg-on-primary text-primary px-4 py-2 rounded-lg font-bold text-label-md w-fit self-start">START CHAT</button>
+</div>
+<!-- Report a Problem -->
+<div class="bg-surface-container p-lg rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between h-48 active:scale-95 transition-all">
+<div>
+<span class="material-symbols-outlined text-4xl mb-sm text-error">report</span>
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Report a Problem</h4>
+<p class="text-body-sm text-on-surface-variant">Found a bug or wrong translation?</p>
+</div>
+<button class="mt-4 border border-outline text-on-surface-variant px-4 py-2 rounded-lg font-bold text-label-md w-fit self-start">SUBMIT REPORT</button>
+</div>
+</section>
+<!-- Atmosphere Element -->
+<div class="mt-xl p-md rounded-2xl border border-dashed border-primary-fixed-dim bg-primary-fixed/10 flex items-center gap-4">
+<div class="p-2 bg-primary-fixed rounded-full">
+<span class="material-symbols-outlined text-primary-container">info</span>
+</div>
+<div>
+<p class="text-body-sm font-semibold text-on-primary-fixed-variant">Community Forum</p>
+<p class="text-xs text-on-surface-variant">Join 5,000+ users discussing Ga language tech.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-primary">arrow_forward_ios</span>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim pb-safe px-2 border-t border-outline-variant shadow-sm rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-container scale-110 -mt-6 bg-white rounded-full shadow-lg p-2 border-4 border-background">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold w-16 h-16 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="text-label-md font-label-md">Alerts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</button>
+</nav>
+<script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // If it wasn't active, open it
+            if (!isActive) {
+                item.classList.add('active');
+                
+                // Micro-interaction: Scroll into view if needed
+                setTimeout(() => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
+        }
+
+        // Add some smooth reveal animations for items
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.accordion-item');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI - Transcription Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .speaker-accent-user { border-left: 4px solid #737686; }
+        .speaker-accent-ai { border-left: 4px solid #004ac6; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e7ff; border-radius: 10px; }
+        .glass-player {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md py-sm h-16 bg-surface">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">arrow_back</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">HAKI</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional African man in a bright, modern studio. The lighting is soft and high-key, matching a clean minimalist aesthetic. The background is a soft off-white with subtle blue accents, following the HAKI primary brand colors. High-resolution digital photography with sharp focus on facial features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoDqhsi7TYUCj3hRe8gy2V-jkUvlZOw-d2LJ22NWz5PsQMEB7pFXj3cFFmmHxvwd6kUC13xzLWMx465qqCXvNeemJlWHTdL5AUE0v6bdYNxkINMqIh4T_sqaa_yp_fGMVDebDu5V9GPcCnJubK9KumxN8wDzGtMlPG6eJzOOHhZ-G3203Wj2TKgBMCLxNzQE1lJ8zjumTR2fDYIBvgyzX4gJKPzEWS_HY9eGkMXcyB_-_rmzBv_d1K"/>
+</div>
+</div>
+</header>
+<main class="flex-1 mt-16 px-container-margin pt-md space-y-lg">
+<!-- Audio Player Hero Section -->
+<section class="w-full glass-player rounded-xl border border-outline-variant p-md shadow-sm">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-display-lg">graphic_eq</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<h2 class="text-headline-sm font-headline-sm truncate">Interview_Ga_Market_01.wav</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Processed • 2m 45s</p>
+</div>
+</div>
+<!-- Waveform Placeholder & Progress -->
+<div class="h-12 w-full flex items-end gap-[2px] mb-sm px-1">
+<!-- Mock waveform bars -->
+<div class="flex-1 bg-primary h-2 rounded-full opacity-20"></div>
+<div class="flex-1 bg-primary h-4 rounded-full opacity-30"></div>
+<div class="flex-1 bg-primary h-8 rounded-full"></div>
+<div class="flex-1 bg-primary h-6 rounded-full"></div>
+<div class="flex-1 bg-primary h-10 rounded-full"></div>
+<div class="flex-1 bg-primary h-3 rounded-full opacity-40"></div>
+<div class="flex-1 bg-primary h-7 rounded-full"></div>
+<div class="flex-1 bg-primary h-5 rounded-full"></div>
+<div class="flex-1 bg-primary h-9 rounded-full"></div>
+<div class="flex-1 bg-primary h-4 rounded-full opacity-30"></div>
+<div class="flex-1 bg-outline-variant h-6 rounded-full"></div>
+<div class="flex-1 bg-outline-variant h-3 rounded-full"></div>
+<div class="flex-1 bg-outline-variant h-8 rounded-full"></div>
+<div class="flex-1 bg-outline-variant h-5 rounded-full"></div>
+</div>
+<!-- Playback Controls -->
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">01:12</span>
+<div class="flex items-center gap-xl">
+<button class="material-symbols-outlined text-primary scale-110 hover:opacity-80 transition-all">replay_10</button>
+<button class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[32px]">pause</span>
+</button>
+<button class="material-symbols-outlined text-primary scale-110 hover:opacity-80 transition-all">forward_10</button>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">02:45</span>
+</div>
+</section>
+<!-- Transcription & Translation Stack -->
+<div class="space-y-lg">
+<!-- Ga Transcription Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden flex flex-col max-h-[320px] shadow-sm">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<span class="text-label-md font-label-md text-primary tracking-widest uppercase">Ga Transcription</span>
+<span class="bg-primary-container text-on-primary-container text-[10px] px-1.5 py-0.5 rounded font-bold">ACCURATE</span>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-2 py-1 rounded transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                        </button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-2 py-1 rounded transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">share</span> Share
+                        </button>
+</div>
+</div>
+<div class="p-md overflow-y-auto custom-scrollbar flex-1 speaker-accent-user bg-white">
+<p class="text-transcription-text font-transcription-text text-on-surface leading-relaxed">
+                        Minaa moko ni eewo tsofa ko ni ewooo fɛfɛɛfɛ. Ni ekɛɛ mi akɛ, "Mina, te oten yɔɔ?" Mikɛɛ lɛ akɛ, "Ojogbaŋŋ, miye fɛɛ." Agbɛnɛ, wɔyaa nshɔ kpo lɛ mli ni wɔyakwɛ mɛi ni hɔ nshɔ lɛ naa.
+                    </p>
+<p class="mt-md text-transcription-text font-transcription-text text-on-surface-variant italic opacity-80">
+                        ...[Audio continues with ambient market sounds in the background]...
+                    </p>
+</div>
+</div>
+<!-- English Translation Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden flex flex-col max-h-[320px] shadow-sm">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<span class="text-label-md font-label-md text-tertiary tracking-widest uppercase">English Translation</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-1.5 py-0.5 rounded font-bold">AI POLISHED</span>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-2 py-1 rounded transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                        </button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-2 py-1 rounded transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">share</span> Share
+                        </button>
+</div>
+</div>
+<div class="p-md overflow-y-auto custom-scrollbar flex-1 speaker-accent-ai bg-white">
+<p class="text-transcription-text font-transcription-text text-on-surface leading-relaxed">
+                        I saw someone wearing a beautiful traditional garment. They asked me, "Mina, how are you doing?" I replied, "I am fine, everything is good." Then, we headed towards the beach to see the people resting by the shore.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB: Download -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-2xl group-hover:animate-bounce">download</span>
+<span class="absolute right-16 bg-on-background text-white text-label-md font-label-md px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Export PDF / TXT</span>
+</button>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface rounded-t-xl shadow-sm border-t border-outline-variant px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-semibold hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-md font-label-md">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for Copy buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('Copy')) {
+                btn.addEventListener('click', function() {
+                    const originalContent = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined text-sm text-secondary">check_circle</span> Copied';
+                    setTimeout(() => {
+                        this.innerHTML = originalContent;
+                    }, 2000);
+                });
+            }
+        });
+
+        // Simple wave animation simulation
+        const bars = document.querySelectorAll('.h-12.w-full div');
+        setInterval(() => {
+            bars.forEach(bar => {
+                if (bar.classList.contains('bg-primary')) {
+                    const randomHeight = Math.floor(Math.random() * 40) + 10;
+                    bar.style.height = `${randomHeight}px`;
+                }
+            });
+        }, 150);
+    </script>
+</body></html>

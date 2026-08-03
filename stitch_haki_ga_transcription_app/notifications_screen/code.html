@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #faf8ff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .unread-glow {
+            box-shadow: 0 0 15px -3px rgba(37, 99, 235, 0.15);
+        }
+        .ai-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(111, 251, 190, 0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-container-margin py-sm h-16 bg-surface dark:bg-surface-dim">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist profile portrait of a professional African man in modern attire, soft studio lighting with a clean light blue background, high quality photography style, mirroring the intelligent clarity of the HAKI interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWW2NqiOSlrJls4WHfHM6WGfSvjY6s_vTY6109vwQtoazhdPTI4zfbjBah3PBkyzprylz8Zz8Pnh6cSx0OW_6HvspbYxCotg9ZCK23S_zRXZIBHvoxiU0VH0zwSQATyRb8j5euw1XbbZBfo-i1dsWyMzUbHbLB1ijnROqrQOrHa8vPWoJIU1AbCUrTxlQlPJzS-O3im-HwUMLYpCfNyPLS_OpXd5ZJl1M5NKkWTN1xmvXOTSFx7ADs"/>
+</div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">HAKI</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="pt-20 pb-24 px-container-margin min-h-screen">
+<!-- Screen Header -->
+<div class="mb-lg">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Notifications</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Stay updated on your Ga transcriptions and account.</p>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-sm mb-lg overflow-x-auto no-scrollbar pb-xs">
+<button class="px-md py-xs rounded-full bg-primary text-on-primary text-label-md font-label-md">All</button>
+<button class="px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-high transition-colors">Unread</button>
+<button class="px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-high transition-colors">Transcriptions</button>
+<button class="px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-high transition-colors">System</button>
+</div>
+<!-- Notification List -->
+<div class="space-y-gutter">
+<!-- Unread Notification Item -->
+<div class="relative group bg-surface-container-lowest border border-outline-variant rounded-xl p-md unread-glow active:scale-95 transition-all duration-150">
+<!-- Unread Indicator Dot -->
+<div class="absolute top-md right-md w-2 h-2 bg-primary rounded-full"></div>
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">description</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="text-body-md font-semibold text-on-surface">Transcription ready</h3>
+<span class="text-label-md font-label-md text-primary">Just now</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">Your audio recording "Ga Traditional Council Interview" has been successfully transcribed and translated.</p>
+<div class="mt-md flex gap-sm">
+<button class="bg-primary text-on-primary px-md py-2 rounded-lg text-label-md font-label-md hover:opacity-90 transition-opacity">View Details</button>
+<button class="border border-outline-variant text-on-surface-variant px-md py-2 rounded-lg text-label-md font-label-md hover:bg-surface-container-low transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Warning/Alert Notification -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md active:scale-95 transition-all duration-150">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-error-container">timer_off</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="text-body-md font-semibold text-on-surface">Recording expires</h3>
+<span class="text-label-md font-label-md text-on-surface-variant">2h ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">The temporary storage for "Unsaved Session #42" will expire in 15 minutes. Save it now to avoid data loss.</p>
+</div>
+</div>
+</div>
+<!-- AI Progress / Shimmer -->
+<div class="relative bg-surface-container-lowest border border-outline-variant rounded-xl p-md overflow-hidden">
+<div class="ai-shimmer absolute top-0 left-0 w-full h-1"></div>
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">auto_awesome</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="text-body-md font-semibold text-on-surface">Processing Ga Nuances</h3>
+<span class="text-label-md font-label-md text-secondary">In Progress</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">HAKI AI is refining the cultural context for your recent transcription. We'll notify you when it's polished.</p>
+</div>
+</div>
+</div>
+<!-- Read Notification -->
+<div class="bg-surface-container-low border border-outline-variant opacity-80 rounded-xl p-md active:scale-95 transition-all duration-150">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="text-body-md font-semibold text-on-surface">Login successful</h3>
+<span class="text-label-md font-label-md text-on-surface-variant">Yesterday</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">A new login was detected from a Chrome browser on Windows in Accra, Ghana.</p>
+</div>
+</div>
+</div>
+<!-- More System Notification -->
+<div class="bg-surface-container-low border border-outline-variant opacity-80 rounded-xl p-md active:scale-95 transition-all duration-150">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">update</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="text-body-md font-semibold text-on-surface">System Update</h3>
+<span class="text-label-md font-label-md text-on-surface-variant">3 days ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">HAKI v2.4 introduces improved accuracy for the Gã-Mashie dialect. Try it out!</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Logic (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center" id="empty-state">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[48px] text-outline">notifications_off</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">All caught up!</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[280px]">You have no new notifications at the moment.</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim pb-safe px-2 shadow-sm border-t border-outline-variant dark:border-outline rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-md font-label-md mt-1">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold bg-surface-container-low transition-all duration-200 px-4 py-2 rounded-lg scale-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="text-label-md font-label-md mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md mt-1">Profile</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.active\\:scale-95').forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.classList.add('opacity-80');
+            });
+            item.addEventListener('touchend', function() {
+                this.classList.remove('opacity-80');
+            });
+        });
+
+        // Simple mock for notification dismissal
+        const dismissButtons = document.querySelectorAll('button:contains("Dismiss")');
+        // Standard button selectors for demo
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText === "Dismiss") {
+                btn.addEventListener('click', function(e) {
+                    const card = this.closest('.group');
+                    card.style.transform = 'translateX(100%)';
+                    card.style.opacity = '0';
+                    setTimeout(() => card.remove(), 300);
+                });
+            }
+        });
+    </script>
+</body></html>

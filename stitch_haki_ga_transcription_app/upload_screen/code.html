@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>HAKI - Upload Transcription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eef0ff",
+                    "inverse-surface": "#283044",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "surface": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "primary": "#004ac6",
+                    "surface-container-high": "#e2e7ff",
+                    "background": "#faf8ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container-low": "#f2f3ff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary": "#943700",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#faf8ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdbcd",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eaedff",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#131b2e",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#dae2fd",
+                    "secondary": "#006c49",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d2d9f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "transcription-text": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "transcription-text": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .drag-area-active {
+            border-color: #004ac6;
+            background-color: #f2f3ff;
+            transform: scale(1.01);
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, transparent, rgba(0, 74, 198, 0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface-dim flex justify-between items-center px-container-margin py-sm h-16">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional high-definition headshot of a smiling West African man in a modern office setting. The lighting is soft and warm, reflecting a professional yet approachable persona. The background is a minimalist studio with clean white walls and subtle wooden accents, maintaining a high-utility AI interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB298nteoHfJAY9iZky2AOk8siA0mvhhf7jAdl33h9oKsIbZKXVZORjzf1uM4HmMThOJ7lh0wr3V732wT7PLmN63rtuPcN5dtE3Nvx8n9UUhI3lGOqyS_P6-Cprn5EJzGIPOhJj2_qwnUoFjFo8AI3Vky3M2ETezrjK5TzEVgNE27v_HChpTtKFSGPqfTo4mZ4z_tyKN7dSlMNNjyf5t7jCAdmVjkIlDJwZtiRTK4M1HWxlntAVKTzD"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">HAKI</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="pt-20 pb-28 px-container-margin max-w-lg mx-auto">
+<!-- Page Header -->
+<div class="mb-lg">
+<h1 class="text-display-lg font-display-lg text-on-background">Upload Audio</h1>
+<p class="text-body-md text-on-surface-variant mt-xs">Transcribe Ga language recordings with AI precision.</p>
+</div>
+<!-- Upload Zone -->
+<section class="relative group cursor-pointer border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-xl p-xl flex flex-col items-center justify-center transition-all duration-300 custom-shadow mb-lg" id="drop-zone">
+<input accept="audio/*,video/*" class="hidden" id="file-input" type="file"/>
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">upload_file</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm mb-xs">Drag & drop files</h3>
+<p class="text-body-sm text-outline mb-lg text-center">MP3, WAV, or MP4 up to 50MB</p>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all" onclick="document.getElementById('file-input').click()">
+                Choose File
+            </button>
+</section>
+<!-- Selected File Info (Hidden by default) -->
+<div class="hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="file-details">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex items-start gap-md relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined">audio_file</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-body-md font-semibold text-on-surface truncate pr-md" id="file-name">recording_session_01.mp3</h4>
+<button class="text-outline hover:text-error transition-colors" id="remove-file">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex gap-lg mt-sm">
+<div class="flex items-center gap-xs text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span id="file-duration">--:--</span>
+</div>
+<div class="flex items-center gap-xs text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">database</span>
+<span id="file-size">4.2 MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full mt-lg bg-primary text-on-primary h-14 rounded-xl flex items-center justify-center gap-sm font-headline-sm hover:opacity-95 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>Start Transcription</span>
+</button>
+</div>
+<!-- AI Guidance / Tips -->
+<div class="mt-xl grid grid-cols-1 gap-md">
+<div class="p-md rounded-xl bg-secondary-container/10 border border-secondary-container/20 flex gap-md items-center">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<div>
+<p class="text-label-md font-label-md text-secondary uppercase">Optimized for Ga</p>
+<p class="text-body-sm text-on-surface-variant">Our AI understands Ga cultural nuances and dialects.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim pb-safe px-2 shadow-sm border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-label-md font-label-md mt-1">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors w-16 h-16 rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const fileDetails = document.getElementById('file-details');
+        const fileNameDisp = document.getElementById('file-name');
+        const fileSizeDisp = document.getElementById('file-size');
+        const removeFileBtn = document.getElementById('remove-file');
+
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        function handleFile(file) {
+            if (!file) return;
+            
+            fileNameDisp.textContent = file.name;
+            fileSizeDisp.textContent = formatBytes(file.size);
+            
+            // Show details, hide drop zone (optional visual choice)
+            fileDetails.classList.remove('hidden');
+            dropZone.classList.add('opacity-50');
+            
+            // Simple haptic-like scale effect on drop
+            dropZone.style.transform = 'scale(0.98)';
+            setTimeout(() => dropZone.style.transform = '', 150);
+        }
+
+        // Drag and drop handlers
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-area-active'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-area-active'), false);
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const file = dt.files[0];
+            handleFile(file);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFile(e.target.files[0]);
+        });
+
+        removeFileBtn.addEventListener('click', () => {
+            fileDetails.classList.add('hidden');
+            dropZone.classList.remove('opacity-50');
+            fileInput.value = '';
+        });
+
+        // Click on drop zone triggers file input
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+    </script>
+</body></html>

@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Build / tooling
+dist/
+build/
+.expo/
+web-build/
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.swp
+.kilocode/
+.qodo/
+
+# Local runtime data
+uploads/*
+!uploads/.gitkeep
+*.db
+transcriptions.db
+
+# Large binaries / models (download separately)
+Haki.apk
+*.apk
+twi_trained_whisper/
+models/*.bin
+models/*.safetensors
+*.pt
+*.pth
+
+# Expo / native
+mobile/android/.gradle/
+mobile/android/app/build/
+mobile/android/build/
+mobile/.gradle-home/
+mobile/.gradle/
+mobile/ios/Pods/
+mobile/ios/build/
+*.jks
+*.keystore
+
+# Misc
+/package-lock.json
