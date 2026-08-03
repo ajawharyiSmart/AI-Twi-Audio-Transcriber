@@ -1,3 +1,4 @@
+import * as FileSystem from 'expo-file-system/legacy';
 import { API_BASE_URL, ENDPOINTS } from '../config';
 
 export interface TranscriptionResult {
@@ -28,36 +29,74 @@ export interface HealthStatus {
 
 function networkError(e: unknown): never {
   const msg = e instanceof Error ? e.message : String(e);
-  if (msg.includes('Network request failed') || msg.includes('fetch')) {
+  if (msg.includes('Network request failed') || msg.includes('fetch') || msg.includes('Unable to resolve host')) {
     throw new Error('Cannot connect to the server. Please ensure the backend is running and try again.');
   }
   throw e instanceof Error ? e : new Error(msg);
 }
 
+function guessMimeType(name: string, fallback = 'audio/mpeg'): string {
+  const ext = name.split('.').pop()?.toLowerCase();
+  const map: Record<string, string> = {
+    mp3: 'audio/mpeg',
+    mpeg: 'audio/mpeg',
+    wav: 'audio/wav',
+    m4a: 'audio/mp4',
+    aac: 'audio/aac',
+    ogg: 'audio/ogg',
+    flac: 'audio/flac',
+    webm: 'audio/webm',
+    mp4: 'video/mp4',
+  };
+  return (ext && map[ext]) || fallback;
+}
+
+/**
+ * Upload via expo-file-system multipart.
+ * RN FormData `{ uri, name, type }` throws "Unsupported FormDataPart implementation"
+ * under Expo's fetch stack on modern Android builds.
+ */
 export async function transcribeAudio(
   audioFile: { uri: string; name: string; type: string },
   onProgress: (p: number) => void = () => {},
 ): Promise<TranscriptionResult> {
-  const formData = new FormData();
-  formData.append('file', { uri: audioFile.uri, name: audioFile.name, type: audioFile.type } as any);
+  const safeName = (audioFile.name || 'recording.mp3').replace(/[^\w.\-() ]+/g, '_');
+  const mimeType = audioFile.type || guessMimeType(safeName);
+  const uploadUri = `${FileSystem.cacheDirectory}haki-upload-${Date.now()}-${safeName}`;
 
   try {
-    // Do not set Content-Type manually — fetch must add the multipart boundary.
-    const response = await fetch(`${API_BASE_URL}${ENDPOINTS.TRANSCRIBE}`, {
-      method: 'POST',
-      body: formData,
-    });
+    onProgress(10);
+    await FileSystem.copyAsync({ from: audioFile.uri, to: uploadUri });
+    onProgress(30);
 
-    if (!response.ok) {
-      const errData = await response.json().catch(() => ({}));
-      const detail = (errData as any).detail || (errData as any).error;
-      throw new Error(detail || `Transcription failed: ${response.status}`);
+    const upload = await FileSystem.uploadAsync(
+      `${API_BASE_URL}${ENDPOINTS.TRANSCRIBE}`,
+      uploadUri,
+      {
+        httpMethod: 'POST',
+        uploadType: FileSystem.FileSystemUploadType.MULTIPART,
+        fieldName: 'file',
+        mimeType,
+      },
+    );
+
+    if (upload.status < 200 || upload.status >= 300) {
+      let detail = `Transcription failed: ${upload.status}`;
+      try {
+        const errData = JSON.parse(upload.body);
+        detail = errData.detail || errData.error || detail;
+      } catch {
+        if (upload.body) detail = upload.body.slice(0, 200);
+      }
+      throw new Error(detail);
     }
 
     onProgress(100);
-    return response.json();
+    return JSON.parse(upload.body) as TranscriptionResult;
   } catch (e) {
     return networkError(e);
+  } finally {
+    FileSystem.deleteAsync(uploadUri, { idempotent: true }).catch(() => {});
   }
 }
 
